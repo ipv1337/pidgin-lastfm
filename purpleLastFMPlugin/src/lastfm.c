@@ -1,5 +1,5 @@
 /*
- * LastFM Plugin
+ * Pidgin LastFM Plugin
  *
  * Copyright (C) 2008, James H. Nguyen <james at uci dot edu>
  *
