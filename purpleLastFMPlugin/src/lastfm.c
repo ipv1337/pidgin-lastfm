@@ -55,8 +55,8 @@
 void lastPlayedCB (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gchar *url_text, gsize len, const gchar *error_message);
 void recentTracksCB (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gchar *url_text, gsize len, const gchar *error_message);
 
-void setStatusRecentTrack (const char * str);
-void setSavedStatusRecentTrack (const char * str);
+void setStatusRecentTrack (GString *str);
+void setSavedStatusRecentTrack (GString *str);
 
 
 PurpleUtilFetchUrlData *url_data = NULL;
@@ -86,6 +86,7 @@ lastPlayedCB (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gchar 
 	/* 1208276806,Airbourne – Let's Ride */
 	gchar *recentList = (gchar *)user_data;
 	gchar mostRecent[256 + 1];
+	GString *statusMsg = NULL;
 
 	sscanf(url_text, "%256[^\n]", &mostRecent);
 	//sprintf(mostRecent, "The last time: %d", &lastTime);
@@ -96,7 +97,11 @@ lastPlayedCB (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gchar 
 			mostRecent, 
 			NULL, NULL, NULL);
 
-	setStatusRecentTrack(mostRecent);
+	statusMsg = g_string_new("");
+	g_string_append_printf(statusMsg, mostRecent);
+	g_string_erase(statusMsg, (gssize)0, (gssize)11);
+	setStatusRecentTrack(statusMsg);
+	g_string_free(statusMsg, TRUE);
 }
 
 static void
@@ -124,7 +129,7 @@ recentTracksCB (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gcha
 }
 
 void
-setStatusRecentTrack (const char * str) {
+setStatusRecentTrack (GString *str) {
 	GList *accounts = NULL, *head = NULL;
 	PurpleAccount *account = NULL;
 	PurpleStatus *status = NULL;
@@ -134,7 +139,7 @@ setStatusRecentTrack (const char * str) {
 		account = (PurpleAccount*)accounts->data;
 		if (account != NULL) {
 			status = purple_account_get_active_status (account);
-			purple_account_set_status (account, purple_status_get_id(status), TRUE, "message", str, NULL);
+			purple_account_set_status (account, purple_status_get_id(status), TRUE, "message", str->str, NULL);
 		}
 		accounts = accounts->next;
 	}
@@ -142,7 +147,7 @@ setStatusRecentTrack (const char * str) {
 }
 
 void
-setSavedStatusRecentTrack (const char * str) {
+setSavedStatusRecentTrack (GString *str) {
 	PurpleSavedStatus *savedstatus = NULL, *current_savedstatus = purple_savedstatus_get_current();
 	
 	if (!(savedstatus = purple_savedstatus_find("LastFM"))) {
