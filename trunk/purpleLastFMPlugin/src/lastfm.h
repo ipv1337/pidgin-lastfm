@@ -58,9 +58,7 @@ static const char *PREF_MPD_PASSWORD = "/plugins/core/musictracker/string_mpd_pa
 void lastPlayedCB (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gchar *url_text, gsize len, const gchar *error_message);
 void recentTracksCB (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gchar *url_text, gsize len, const gchar *error_message);
 void lastfmFetchServiceCB (gpointer data);
-void quitting_cb (void *data);
 
-void unset_status (void);
 void setStatusRecentTrack (GString *str);
 void setSavedStatusRecentTrack (GString *str);
 

@@ -32,7 +32,7 @@
  * This function is the callback for the plugin action we added.
  */
 void
-plugin_action_lastPlayedCB (PurplePluginAction * action) {
+plugin_action_lastPlayedCB (PurplePluginAction *action) {
 	gchar *recentList;
 	
 	purple_util_fetch_url("http://ws.audioscrobbler.com/1.0/user/sentinael/recenttracks.txt", 
@@ -40,18 +40,16 @@ plugin_action_lastPlayedCB (PurplePluginAction * action) {
 			NULL, 
 			TRUE, 
 			lastPlayedCB, 
-			(gpointer)recentList);
+			(gpointer)recentList); // passed to lastPlayedCB as user_data
 }
 
 void
-plugin_action_recentTracksCB (PurplePluginAction * action) {
-	gchar *recentList;
-	
+plugin_action_recentTracksCB (PurplePluginAction *action) {
 	purple_util_fetch_url("http://ws.audioscrobbler.com/1.0/user/sentinael/recenttracks.txt", 
 			TRUE, 
 			NULL, 
 			TRUE, 
 			recentTracksCB, 
-			(gpointer)recentList); // passed to recentTracksCB as user_data
+			NULL);
 }
 
