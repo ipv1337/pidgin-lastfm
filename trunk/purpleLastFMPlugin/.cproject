@@ -36,11 +36,12 @@
 </option>
 <option id="gnu.c.compiler.option.preprocessor.undef.symbol.1177971601" name="Undefined symbols (-U)" superClass="gnu.c.compiler.option.preprocessor.undef.symbol"/>
 <option id="gnu.c.compiler.option.include.paths.1040795909" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+<listOptionValue builtIn="false" value="/home/james/development/pidgin-2.2.1"/>
+<listOptionValue builtIn="false" value="/usr/include/libpurple"/>
 <listOptionValue builtIn="false" value="/usr/include/glib-2.0"/>
 <listOptionValue builtIn="false" value="/usr/lib/glib-2.0/include"/>
 <listOptionValue builtIn="false" value="/usr/include/dbus-1.0"/>
 <listOptionValue builtIn="false" value="/usr/lib/dbus-1.0/include"/>
-<listOptionValue builtIn="false" value="/usr/include/libpurple"/>
 </option>
 <option id="gnu.c.compiler.option.optimization.flags.2106207127" name="Other optimization flags" superClass="gnu.c.compiler.option.optimization.flags"/>
 <option id="gnu.c.compiler.option.debugging.other.136681760" name="Other debugging flags" superClass="gnu.c.compiler.option.debugging.other"/>
@@ -69,15 +70,15 @@
 <listOptionValue builtIn="false" value="resolv"/>
 </option>
 <option id="gnu.c.link.option.paths.1459312244" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
-<listOptionValue builtIn="false" value="/usr/lib"/>
-<listOptionValue builtIn="false" value="/usr/lib/purple-2"/>
 <listOptionValue builtIn="false" value="/usr/lib/pidgin"/>
+<listOptionValue builtIn="false" value="/usr/lib/purple-2"/>
+<listOptionValue builtIn="false" value="/usr/lib"/>
 <listOptionValue builtIn="false" value="/usr/local/lib"/>
 </option>
 <option id="gnu.c.link.option.ldflags.982796972" name="Linker flags" superClass="gnu.c.link.option.ldflags"/>
 <option id="gnu.c.link.option.other.2088932520" name="Other options (-Xlinker [option])" superClass="gnu.c.link.option.other"/>
 <option id="gnu.c.link.option.userobjs.471990100" name="Other objects" superClass="gnu.c.link.option.userobjs"/>
-<option defaultValue="true" id="gnu.c.link.option.shared.95062677" name="Shared (-shared)" superClass="gnu.c.link.option.shared" value="false" valueType="boolean"/>
+<option defaultValue="true" id="gnu.c.link.option.shared.95062677" name="Shared (-shared)" superClass="gnu.c.link.option.shared" value="true" valueType="boolean"/>
 <option id="gnu.c.link.option.soname.671083208" name="Shared object name (-Wl,-soname=)" superClass="gnu.c.link.option.soname"/>
 <option id="gnu.c.link.option.implname.1817920453" name="Import Library name (-Wl,--out-implib=)" superClass="gnu.c.link.option.implname"/>
 <option id="gnu.c.link.option.defname.2065620903" name="DEF file name (-Wl,--output-def=)" superClass="gnu.c.link.option.defname"/>
@@ -107,6 +108,8 @@
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+
+
 
 <storageModule moduleId="scannerConfiguration">
 <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile"/>
@@ -355,6 +358,8 @@
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+
+
 
 <storageModule moduleId="scannerConfiguration">
 <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile"/>
