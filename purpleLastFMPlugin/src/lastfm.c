@@ -104,26 +104,6 @@ recentTracksCB (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gcha
 }
 
 void
-quitting_cb(void *data) {
-	unset_status();
-}
-
-void
-unset_status(void) {
-	PurpleSavedStatus *current_savedstatus = purple_savedstatus_get_current();
-	if (strcmp("LastFM", purple_savedstatus_get_title(current_savedstatus))) {
-		original_savedstatus = current_savedstatus;
-		//purple_debug_info(PLUGIN_ID, "unset_status: new original savedstatus %s %d\n", purple_savedstatus_get_title(original_savedstatus), purple_savedstatus_get_type(original_savedstatus));
-		return;
-	}
-	if (!original_savedstatus) {
-		original_savedstatus = purple_savedstatus_new(NULL, purple_savedstatus_get_type(current_savedstatus));
-	}
-	purple_savedstatus_activate(original_savedstatus);
-	//purple_debug_info(PLUGIN_ID, "unsetted status\n");
-}
-
-void
 lastfmFetchServiceCB (gpointer data) {
 	purple_util_fetch_url("http://ws.audioscrobbler.com/1.0/user/sentinael/recenttracks.txt", 
 			TRUE, 
