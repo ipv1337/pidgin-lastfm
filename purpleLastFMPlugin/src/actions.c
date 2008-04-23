@@ -53,3 +53,30 @@ plugin_action_recentTracksCB (PurplePluginAction *action) {
 			NULL);
 }
 
+/* 
+ * we tell libpurple in the PurplePluginInfo struct to call this function to
+ * get a list of plugin actions to use for the plugin.  This function gives
+ * libpurple that list of actions. 
+ */
+GList *
+plugin_actions (PurplePlugin *plugin, gpointer context) {
+	/* some C89 (a.k.a. ANSI C) compilers will warn if any variable declaration
+	 * includes an initilization that calls a function.  To avoid that, we
+	 * generally initialize our variables first with constant values like NULL
+	 * or 0 and assign to them with function calls later */
+	GList *list = NULL;
+
+	/* The action gets created by specifying a name to show in the UI and a
+	 * callback function to call. */
+	//PurplePluginAction *action = NULL;
+	//action = purple_plugin_action_new("LastFM Action Test", plugin_action_test_cb);
+
+	/* libpurple requires a GList of plugin actions, even if there is only one
+	 * action in the list.  We append the action to a GList here. */
+	//list = g_list_append(list, action);
+	list = g_list_append(list, purple_plugin_action_new("Last Played", plugin_action_lastPlayedCB));
+	list = g_list_append(list, purple_plugin_action_new("Recent Tracks", plugin_action_recentTracksCB));
+	
+	/* Once the list is complete, we send it to libpurple. */
+	return list;
+}

@@ -25,8 +25,8 @@
 
 #include "plugin.h"
 
-//static GList *plugin_actions (PurplePlugin *plugin, gpointer context);
 void plugin_action_lastPlayedCB (PurplePluginAction *action);
 void plugin_action_recentTracksCB (PurplePluginAction *action);
+GList *plugin_actions (PurplePlugin * plugin, gpointer context);
 
 #endif // _ACTIONS_H_
