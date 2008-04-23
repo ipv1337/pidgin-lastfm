@@ -25,12 +25,16 @@
 
 #include <assert.h>
 #include <glib.h>
-#include <gtk/gtk.h>
+
 #include "prefs.h"
 #include "plugin.h"
 #include "account.h"
 
+#include "actions.h"
+
 #define PLUGIN_ID "core-gtk-pidgin-lastfm"
+#define PLUGIN_NAME "Last.FM"
+#define PLUGIN_VER "1.1"
 
 #define STATUS_OFF 0
 #define STATUS_PAUSED 1
@@ -54,8 +58,6 @@ static const char *PREF_MPD_PASSWORD = "/plugins/core/musictracker/string_mpd_pa
 void lastPlayedCB (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gchar *url_text, gsize len, const gchar *error_message);
 void recentTracksCB (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gchar *url_text, gsize len, const gchar *error_message);
 void lastfmFetchServiceCB (gpointer data);
-void toggle_display_status_cb (PurplePluginAction *action);
-void status_changed_cb (PurpleAccount *account, PurpleStatus *old, PurpleStatus *new, gpointer data);
 void quitting_cb (void *data);
 
 void unset_status (void);
