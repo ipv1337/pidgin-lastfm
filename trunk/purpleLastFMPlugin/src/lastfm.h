@@ -34,7 +34,7 @@
 
 #define PLUGIN_ID "core-gtk-pidgin-lastfm"
 #define PLUGIN_NAME "Last.FM"
-#define PLUGIN_VER "1.1"
+#define PLUGIN_VER "1.1.23"
 
 #define STATUS_OFF 0
 #define STATUS_PAUSED 1
