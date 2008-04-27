@@ -35,6 +35,8 @@
 #define PLUGIN_ID "core-gtk-pidgin-lastfm"
 #define PLUGIN_NAME "Last.FM"
 #define PLUGIN_VER "1.1.23"
+#define PLUGIN_AUTHOR "James H. Nguyen <james.nguyen@gmail.com>"
+#define PLUGIN_HOME_URL "http://code.google.com/p/pidgin-lastfm"
 
 #define STATUS_OFF 0
 #define STATUS_PAUSED 1

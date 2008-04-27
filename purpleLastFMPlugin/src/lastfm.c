@@ -194,20 +194,16 @@ static PurplePluginInfo info = {
 	0,
 	NULL,
 	PURPLE_PRIORITY_DEFAULT,
-
 	PLUGIN_ID,
 	PLUGIN_NAME,
 	PLUGIN_VER,
-
 	"Last.FM Plugin",
 	"Last.FM Plugin Description",
-	"James H. Nguyen <james dot nguyen at gmail dot com>",
-	"http://code.google.com/p/pidgin-lastfm",
-
+	PLUGIN_AUTHOR,
+	PLUGIN_HOME_URL,
 	plugin_load,
 	plugin_unload,
 	NULL,
-
 	NULL, // &ui_info,
 	NULL,
 	NULL,
