@@ -1,7 +1,7 @@
 /*
  * Pidgin LastFM Plugin
  *
- * Copyright (C) 2008, James H. Nguyen <james dot nguyen at gmail dot com>
+ * Copyright (C) 2008, James H. Nguyen <james.nguyen+pidgin@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -25,8 +25,8 @@
 
 #include "plugin.h"
 
-void plugin_action_lastPlayedCB (PurplePluginAction *action);
-void plugin_action_recentTracksCB (PurplePluginAction *action);
+void plugin_action_cbLastPlayed (PurplePluginAction *action);
+void plugin_action_cbRecentTracks (PurplePluginAction *action);
 GList *plugin_actions (PurplePlugin *plugin, gpointer context);
 
 #endif // _ACTIONS_H_

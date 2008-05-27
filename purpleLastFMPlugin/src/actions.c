@@ -1,7 +1,7 @@
 /*
  * Pidgin LastFM Plugin
  *
- * Copyright (C) 2008, James H. Nguyen <james dot nguyen at gmail dot com>
+ * Copyright (C) 2008, James H. Nguyen <james.nguyen+pidgin@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -32,25 +32,42 @@
  * This function is the callback for the plugin action we added.
  */
 void
-plugin_action_lastPlayedCB (PurplePluginAction *action) {
-	gchar *recentList;
+plugin_action_cbLastPlayed (PurplePluginAction *action) {
+	GString *url = NULL;
+	gchar *recentList = NULL;
+	gchar *username = purple_prefs_get_string(PREF_USERNAME);
 	
-	purple_util_fetch_url("http://ws.audioscrobbler.com/1.0/user/sentinael/recenttracks.txt", 
+	url = g_string_new(LASTFM_AUDIOSCROBBLER);
+	g_string_append_printf(url, username);
+	g_string_append_printf(url, LASTFM_RECENTTRACKS);
+	
+	purple_util_fetch_url(url->str, 
 			TRUE, 
 			NULL, 
 			TRUE, 
-			lastPlayedCB, 
-			(gpointer)recentList); // passed to lastPlayedCB as user_data
+			cbLastPlayed, 
+			(gpointer)recentList); // passed to cbLastPlayed as user_data
+	
+	g_string_free(url, TRUE);
 }
 
 void
-plugin_action_recentTracksCB (PurplePluginAction *action) {
-	purple_util_fetch_url("http://ws.audioscrobbler.com/1.0/user/sentinael/recenttracks.txt", 
+plugin_action_cbRecentTracks (PurplePluginAction *action) {
+	GString *url = NULL;
+	gchar *username = purple_prefs_get_string(PREF_USERNAME);
+
+	url = g_string_new(LASTFM_AUDIOSCROBBLER);
+	g_string_append_printf(url, username);
+	g_string_append_printf(url, LASTFM_RECENTTRACKS);
+
+	purple_util_fetch_url(url->str, 
 			TRUE, 
 			NULL, 
 			TRUE, 
-			recentTracksCB, 
+			cbRecentTracks, 
 			NULL);
+
+	g_string_free(url, TRUE);
 }
 
 /* 
@@ -74,8 +91,8 @@ plugin_actions (PurplePlugin *plugin, gpointer context) {
 	/* libpurple requires a GList of plugin actions, even if there is only one
 	 * action in the list.  We append the action to a GList here. */
 	//list = g_list_append(list, action);
-	list = g_list_append(list, purple_plugin_action_new("Last Played", plugin_action_lastPlayedCB));
-	list = g_list_append(list, purple_plugin_action_new("Recent Tracks", plugin_action_recentTracksCB));
+	list = g_list_append(list, purple_plugin_action_new("Last Played", plugin_action_cbLastPlayed));
+	list = g_list_append(list, purple_plugin_action_new("Recent Tracks", plugin_action_cbRecentTracks));
 	
 	/* Once the list is complete, we send it to libpurple. */
 	return list;
