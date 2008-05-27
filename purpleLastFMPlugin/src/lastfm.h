@@ -32,11 +32,13 @@
 
 #include "actions.h"
 
-#define PLUGIN_ID "core-gtk-pidgin-lastfm"
-#define PLUGIN_NAME "Last.FM"
-#define PLUGIN_VER "1.1.25"
-#define PLUGIN_AUTHOR "James H. Nguyen <james.nguyen+pidgin@gmail.com>"
-#define PLUGIN_HOME_URL "http://code.google.com/p/pidgin-lastfm"
+#define PLUGIN_ID N_("core-gtk-pidgin-lastfm")
+#define PLUGIN_NAME N_("Last.FM")
+#define PLUGIN_VER N_("1.1.25")
+#define PLUGIN_SUMMARY N_("Yet Another Last.FM Plugin")
+#define PLUGIN_DESCRIPTION N_("This plugin changes account status with the most recent song from audioscrobbler and more features to come")
+#define PLUGIN_AUTHOR N_("James H. Nguyen <james.nguyen+pidgin@gmail.com>")
+#define PLUGIN_HOME_URL N_("http://code.google.com/p/pidgin-lastfm")
 
 #define STATUS_OFF 0
 #define STATUS_PAUSED 1

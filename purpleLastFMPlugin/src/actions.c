@@ -35,7 +35,7 @@ void
 plugin_action_cbLastPlayed (PurplePluginAction *action) {
 	GString *url = NULL;
 	gchar *recentList = NULL;
-	gchar *username = purple_prefs_get_string(PREF_USERNAME);
+	gchar *username = (gchar *)purple_prefs_get_string(PREF_USERNAME);
 	
 	url = g_string_new(LASTFM_AUDIOSCROBBLER);
 	g_string_append_printf(url, username);
@@ -54,7 +54,7 @@ plugin_action_cbLastPlayed (PurplePluginAction *action) {
 void
 plugin_action_cbRecentTracks (PurplePluginAction *action) {
 	GString *url = NULL;
-	gchar *username = purple_prefs_get_string(PREF_USERNAME);
+	gchar *username = (gchar *)purple_prefs_get_string(PREF_USERNAME);
 
 	url = g_string_new(LASTFM_AUDIOSCROBBLER);
 	g_string_append_printf(url, username);

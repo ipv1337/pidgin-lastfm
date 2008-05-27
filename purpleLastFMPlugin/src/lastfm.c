@@ -20,6 +20,8 @@
  *
  */
 
+#include "internal.h"
+
 #ifdef HAVE_CONFIG_H
 # include <config.h>
 #endif
@@ -72,7 +74,6 @@
 PurplePlugin *lastfm_plugin = NULL;
 
 PurpleSavedStatus *original_savedstatus = NULL;
-//PurpleUtilFetchUrlData *url_data = NULL;
 
 GString *audioscrobblerUrl;
 gboolean display_song;
@@ -87,7 +88,7 @@ cbLastPlayed (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gchar 
 	gchar mostRecent[256 + 1];
 	GString *statusMsg = NULL;
 
-	sscanf(url_text, "%256[^\n]", &mostRecent);
+	sscanf(url_text, _("%256[^\n]"), &mostRecent);
 	
 	statusMsg = g_string_new("");
 	g_string_append_printf(statusMsg, mostRecent);
@@ -103,7 +104,7 @@ cbRecentTracks (PurpleUtilFetchUrlData *url_data, gpointer user_data, const gcha
 	
 	purple_notify_message(lastfm_plugin, 
 			PURPLE_NOTIFY_MSG_INFO, 
-			"Displaying Recent Tracks", 
+			_("Displaying Recent Tracks"), 
 			url_text, 
 			NULL, NULL, NULL);
 }
@@ -196,13 +197,13 @@ get_plugin_pref_frame(PurplePlugin *plugin) {
 
 	frame = purple_plugin_pref_frame_new();
 
-	ppref = purple_plugin_pref_new_with_label("Last.FM Configurations");
+	ppref = purple_plugin_pref_new_with_label(_("Last.FM Configurations"));
 	purple_plugin_pref_frame_add(frame, ppref);
 
-	ppref = purple_plugin_pref_new_with_name_and_label("/plugins/core/lastfm/string_username", "username:");
+	ppref = purple_plugin_pref_new_with_name_and_label(PREF_USERNAME, "username:");
 	purple_plugin_pref_frame_add(frame, ppref);
 
-	ppref = purple_plugin_pref_new_with_name_and_label("/plugins/core/lastfm/int_interval", "interval [s]:");
+	ppref = purple_plugin_pref_new_with_name_and_label(PREF_INTERVAL, "interval [s]:");
 	purple_plugin_pref_set_bounds(ppref, 0, 600);
 	purple_plugin_pref_frame_add(frame, ppref);
 
@@ -282,8 +283,8 @@ static PurplePluginInfo info = {
 	PLUGIN_ID,
 	PLUGIN_NAME,
 	PLUGIN_VER,
-	"Last.FM Plugin",
-	"Last.FM Plugin Description",
+	PLUGIN_SUMMARY,
+	PLUGIN_DESCRIPTION,
 	PLUGIN_AUTHOR,
 	PLUGIN_HOME_URL,
 	
