@@ -1,8 +1,16 @@
 Project Lead:
-James H. Nguyen <james dot nguyen at gmail dot com>
+James H. Nguyen <james.nguyen+pidgin@gmail.com>
 
 Project Page:
 http://code.google.com/p/pidgin-lastfm
 
 Build Tool:
 Eclipse v3.3.2 C/C++ Project
+
+Dependencies:
+# apt-get build-dep pidgin
+# apt-get install libpurple-dev
+# apt-get install libpurple-bin (optional)
+
+API:
+http://developer.pidgin.im/doxygen/dev/html/main.html
